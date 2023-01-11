@@ -42,10 +42,12 @@ router.post('/login', async (req, res) => {
         const payload = {id: foundUser._id}
         const token = jwt.encode(payload, config.jwtSecret)
         const userChat = await db.Chat.find({ user: foundUser._id })
+        const userPost = await db.Post.find({ user: foundUser._id })
         res.json({
             user: foundUser,
             token: token,
-            chat: userChat
+            chat: userChat,
+            post: userPost
         })
     } else {
         res.sendStatus(401)
@@ -58,9 +60,11 @@ router.get('/token', isAuthenticated, async (req, res) => {
     const decoded = jwt.decode(token, config.jwtSecret)
     const foundUser = await db.User.findById(decoded.id)
     const userChat = await db.Chat.find({ user: foundUser._id })
+    const userPost = await db.Post.find({ user: foundUser._id })
     res.json({
         user: foundUser,
-        chat: userChat
+        chat: userChat,
+        post: userPost
     })
 })
 
@@ -74,9 +78,11 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res)=> {
     const foundUser = await db.User.findById(req.params.id)
     const userChat = await db.Chat.find({ user: foundUser._id })
+    const userPost = await db.Post.find({ user: foundUser._id })
     res.json({
         user: foundUser,
-        chat: userChat
+        chat: userChat,
+        post: userPost
     })
 })
 
@@ -95,6 +101,7 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 //delete
 router.delete('/:id', isAuthenticated, async (req, res)=> {
     await db.Chat.deleteMany({ user: req.params.id})
+    await db.Post.deleteMany({ user: req.params.id})
     await db.User.findByIdAndDelete(req.params.id)
     res.sendStatus(200)
 })
