@@ -1,15 +1,13 @@
-import './home.css'
 
-function Home() {
+import Chat from '../../components/Chat';
 
-
-    return (
-        <div>
-
-        <h1>HOME</h1>
-        
-        </div>
-    )
+export default function Home(props) {
+	return (
+		<div className='Home page'>
+			
+			<div className='comment-section'>
+				<Chat />
+			</div>
+		</div>
+	);
 }
-
-export default Home
