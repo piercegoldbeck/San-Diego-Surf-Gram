@@ -13,12 +13,10 @@ function isAuthenticated(req, res, next){
 }
 
 // create route
-router.post('/', isAuthenticated, async (req, res) => {
+router.post('/', async (req, res) => {
+    console.log(req.body)
     const newChat = await db.Chat.create(req.body)
-    const token = req.headers.authorization
-    const decoded = jwt.decode(token, config.jwtSecret)
-    newChat.user = decoded.id
-    newChat.save()
+    console.log(newChat)
     res.json(newChat)
 })
 
@@ -30,7 +28,7 @@ router.get('/', async (req, res) => {
 
 // show route
 router.get('/:id', async (req, res) => {
-    const foundChat = await db.Chat.findById(req.params.id).populate('user')
+    const foundChat = await db.Chat.findById(req.params.chat).populate('user')
     res.json(foundChat)
 })
 
@@ -56,7 +54,7 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 })
 
 //delete
-router.delete('/:id', isAuthenticated, async (req, res)=> {
+router.delete('/:id', async (req, res)=> {
     await db.Chat.findByIdAndDelete(req.params.id)
     res.sendStatus(200)
 })

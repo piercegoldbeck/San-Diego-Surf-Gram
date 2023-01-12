@@ -1,5 +1,5 @@
-// dependencies
-const express = require('express')
+// // dependencies
+const express = require("express");
 const app = express()
 const cors = require('cors')
 require('./models')

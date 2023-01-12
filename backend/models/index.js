@@ -26,4 +26,4 @@ mongoose.connection.on('error', (error) => {
 
 module.exports.User = require('./user')
 module.exports.Chat = require('./chat')
-module.exports.Chat = require('./post')
+module.exports.Post = require('./post')
