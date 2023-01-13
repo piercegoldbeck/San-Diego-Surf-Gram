@@ -36,7 +36,9 @@ export default function Chat(props) {
 	return (
 		<div className='chat-container'>	
 			<div className="">
-				<button className="btn btn-primary" onClick={()=>{setDisplayChats(!displayChats)}}>chats</button>
+				<button className="btn btn-primary" onClick={()=>{setDisplayChats(!displayChats)}}>
+					SurfChat
+				</button>
 			</div>
 			{displayChats ? <div className="chat-display">
 				<div className='chat-form'>
@@ -53,13 +55,13 @@ export default function Chat(props) {
 								name='chat'
 								className='form-control'
 								type='text'
-								placeholder='...'
+								placeholder='leave a chat here'
 								onChange={handleChange}
 								value={formData.chat}
 							/>
 
 							<button className='btn btn-primary' onClick={handleSubmit}>
-								Chat
+								submit chat
 							</button>
 						</form>
 					) : null}
@@ -69,7 +71,7 @@ export default function Chat(props) {
 					{console.log(chats)}
 					{chats.map((chat, i) => (
 						
-						<div key={i}> {chat.user?.username || 'Anonymous'}: {chat.chat} </div>
+						<div key={i}> {chat.user?.username || 'Unknown User'}: {chat.chat} </div>
                         
 					))}
 				</div>

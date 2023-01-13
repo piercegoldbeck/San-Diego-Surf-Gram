@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
     console.log(req.body)
     const newChat = await db.Chat.create(req.body)
     console.log(newChat)
+    newChat.save()
     res.json(newChat)
 })
 
