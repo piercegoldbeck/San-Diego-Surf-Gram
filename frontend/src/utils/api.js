@@ -20,16 +20,16 @@ export async function loginToAccount(formData) {
 
 // create a chat
 export async function createChat(formData) {
-//   const config = {
-//     headers: {
-//       Authorization: localStorage.getItem("token"),
-//     },
-//   };
+  const config = {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  };
   console.log(formData)
   const { data } = await axios.post(
     "http://localhost:8000/chat",
     formData,
-    // config
+    config
   );
   return data;
 }

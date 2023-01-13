@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { signUp } from '../../utils/api';
-import { useNavigate } from 'react-router-dom';
 
 
 export default function SignUp(props) {
+
+    //states for signUp page
 	const initialState = { username: '', password: '' };
 	const [formState, setFormState] = useState(initialState);
-	const navigate = useNavigate();
 
 	const handleChange = (event) => {
 		setFormState({ ...formState, [event.target.name]: event.target.value })};
@@ -17,19 +17,19 @@ export default function SignUp(props) {
 				localStorage.token = data.token;
 				localStorage.user_Id = data.user._id;
 				props.setUser(data.user);
+                console.log(data.user)
 			});
-			navigate('/user/login')
+		
 		};
 
 		return (
-			<div className='card signup-form' style={{ width: '20rem' }}>
-				<div className='card-body'>
+			<div>
+				<div>
 					<h1>Sign Up</h1>
 					<form onSubmit={handleSubmit}>
-						<label htmlFor='username' className='form-label'>
+						<label htmlFor='username'>
 							<p>Username</p>
 							<input
-								className='form-control'
 								type='text'
 								name='username'
 								value={formState.username}
@@ -37,10 +37,9 @@ export default function SignUp(props) {
 								required
 							/>
 						</label>
-						<label htmlFor='password' className='form-label'>
+						<label htmlFor='password'>
 							<p>Password</p>
 							<input
-								className='form-control'
 								type='password'
 								name='password'
 								value={formState.password}
@@ -48,7 +47,7 @@ export default function SignUp(props) {
 								required
 							/>
 						</label>
-						<button className='btn btn-primary' type='submit'>
+						<button type='submit'>
 							Sign Up
 						</button>
 					</form>
