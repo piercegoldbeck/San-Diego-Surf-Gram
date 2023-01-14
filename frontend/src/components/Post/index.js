@@ -46,7 +46,6 @@ export default function Post() {
         <div>
           <div>
             <button
-              
               onClick={() => {
                 setShowForm(!showForm);
               }}
@@ -62,28 +61,28 @@ export default function Post() {
                   onChange={handleChange}
                   value={formData.location}
                 />
-                 <input
+                <input
                   name="image"
                   type="text"
                   placeholder="enter image link"
                   onChange={handleChange}
                   value={formData.image}
                 />
-                 <input
+                <input
                   name="rating"
                   type="text"
                   placeholder="enter rating out of 10"
                   onChange={handleChange}
                   value={formData.rating}
                 />
-                 <input
+                <input
                   name="difficulty"
                   type="text"
                   placeholder="enter difficulty"
                   onChange={handleChange}
                   value={formData.difficulty}
                 />
-                 <input
+                <input
                   name="break_type"
                   type="text"
                   placeholder="enter break type"
@@ -91,9 +90,7 @@ export default function Post() {
                   value={formData.break_type}
                 />
 
-                <button onClick={handleSubmit}>
-                  submit post
-                </button>
+                <button onClick={handleSubmit}>submit post</button>
               </form>
             ) : null}
           </div>
@@ -105,7 +102,21 @@ export default function Post() {
             {posts.map((post, i) => (
               <div key={i}>
                 {" "}
-                {post.user?.username || "Unknown User"}: {post.post}{" "}
+                <div>
+                  User/
+                  {post.user?.username || "Unknown User"}:
+                </div>
+                <u>Surf Location</u>
+                <div>{post.location}</div>
+                <div>
+                  <img src={post.image} />
+                </div>
+                <u>Rating out of 10:</u>
+                <div>{post.rating}</div>
+                <u>Level of difficulty(ex:beginner, itermediate, expert)</u>
+                <div>{post.difficulty}</div>
+                <u>Break type: (ex:sand, reef, rock)</u>
+                <div>{post.break_type}</div>
               </div>
             ))}
           </div>

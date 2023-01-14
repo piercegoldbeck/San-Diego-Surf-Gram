@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 
 // index route
 router.get('/', async (req, res) => {
-    const allChats = await db.Chat.find({}).populate('user')
+    const allChats = await db.Chat.find({}).populate('user');
     res.json(allChats)
 })
 

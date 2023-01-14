@@ -10,8 +10,8 @@ export default function Chat() {
   const [displayChats, setDisplayChats] = useState(false);
 
   // get chat
-  function getChats() {
-    showChat().then((data) => setChats(data));
+  async function getChats() {
+    await showChat().then((data) => setChats(data));
   }
 
   useEffect(() => {
