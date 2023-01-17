@@ -3,7 +3,11 @@ import { useState, useEffect } from "react";
 // utils
 import { createChat, showChat } from "../../utils/api";
 
-export default function Chat() {
+//materialUI imports
+import * as React from "react";
+import { Box, Typography, Container, Button } from "@mui/material";
+
+export default function Chat({ isLoggedIn }) {
   const [formData, setFormData] = useState({ chat: "" });
   const [showForm, setShowForm] = useState(false);
   const [chats, setChats] = useState([]);
@@ -32,29 +36,38 @@ export default function Chat() {
 
   // render JSX
   return (
-    <div>
-      <div>
-        <button
+    <Box>
+      <Typography variant="h5" mb={2} mt={2}>
+        <u>Check out surf chat below to connect with others:</u>
+      </Typography>
+      {/* <div>
+        <Button
+          variant="contained"
+          disabled={!isLoggedIn}
           onClick={() => {
             setDisplayChats(!displayChats);
           }}
         >
           SurfChat
-        </button>
+        </Button>
       </div>
-      {displayChats ? (
+      <br /> */}
+
+      <div>
         <div>
-          <div>
-            <button
-              
-              onClick={() => {
-                setShowForm(!showForm);
-              }}
-            >
-              Leave a chat
-            </button>
-            {showForm ? (
-              <form>
+          <Button
+            variant="contained"
+            onClick={() => {
+              setShowForm(!showForm);
+            }}
+          >
+            Make a chat
+          </Button>
+          <br />
+          <br />
+          {showForm ? (
+            <form>
+              <Container>
                 <input
                   name="chat"
                   type="text"
@@ -62,27 +75,34 @@ export default function Chat() {
                   onChange={handleChange}
                   value={formData.chat}
                 />
-
-                <button className="btn btn-primary" onClick={handleSubmit}>
-                  submit chat
-                </button>
-              </form>
-            ) : null}
-          </div>
-          <div>
-            <h1>
-              <u>Chats</u>
-            </h1>
-            {console.log(chats)}
-            {chats.map((chat, i) => (
-              <div key={i}>
-                {" "}
-                {chat.user?.username || "Unknown User"}: {chat.chat}{" "}
-              </div>
-            ))}
-          </div>
+              </Container>
+              <br />
+              <Button
+                variant="outlined"
+                className="btn btn-primary"
+                onClick={handleSubmit}
+              >
+                submit chat
+              </Button>
+              <br />
+            </form>
+          ) : null}
         </div>
-      ) : null}
-    </div>
+        <div>
+          <h1>
+            <u>Chats</u>
+          </h1>
+
+          {console.log(chats)}
+
+          {chats.map((chat, i) => (
+            <Box sx={{ p: 3, width: 250, border: 2, borderColor: "text.primary" }} key={i}>
+              {" "}
+              {chat.user?.username || "Unknown User"}: {chat.chat}{" "}
+            </Box>
+          ))}
+        </div>
+      </div>
+    </Box>
   );
 }

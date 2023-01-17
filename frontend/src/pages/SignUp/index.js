@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { signUp } from "../../utils/api";
 
+//materialUI imports
+import Button from '@mui/material/Button';
 export default function SignUp(props) {
   //states for signUp page
   const initialState = { username: "", password: "" };
@@ -27,7 +29,7 @@ export default function SignUp(props) {
         <h1>Sign Up</h1>
         <form onSubmit={handleSubmit}>
           <label htmlFor="username">
-            <p>Username</p>
+            <p>Username:</p>
             <input
               type="text"
               name="username"
@@ -37,7 +39,7 @@ export default function SignUp(props) {
             />
           </label>
           <label htmlFor="password">
-            <p>Password</p>
+            <p>Password:</p>
             <input
               type="password"
               name="password"
@@ -46,7 +48,7 @@ export default function SignUp(props) {
               required
             />
           </label>
-          <button type="submit">Sign Up</button>
+          <Button variant="contained" type="submit">Sign Up</Button>
         </form>
       </div>
     </div>

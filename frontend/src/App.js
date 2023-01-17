@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import * as React from "react";
 //components for app
 import Chat from "./components/Chat";
 import Post from "./components/Post";
@@ -7,53 +7,91 @@ import Post from "./components/Post";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 
+//materialUI imports
+import { Container, Typography, Button, Grid } from "@mui/material";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
+//styles for app.js
+import "./styles.css";
 function App() {
   const [isLoggedIn, setLoginStatus] = useState(false);
   const [user, setUser] = useState(null);
   // Api data
 
   return (
-    <div className="App">
-      <h1>
-        <u>SAN DIEGO SURFGRAM</u>
-      </h1>
+    <div class="App">
+      <div class="title">
+        <Typography variant="h2">
+          SAN DIEGO SURFGRAM
+          {isLoggedIn && (
+            <div class="logoutButton">
+            <Button
+              class
+              variant="outlined"
+              onClick={() => {
+                setLoginStatus(false);
+                localStorage.clear();
+              }}
+            >
+              LogOut
+            </Button>
+            </div>
+          )}
+        </Typography>
+      </div>
       {isLoggedIn && (
-        <h4>
-          ...YOU ARE LOGGED IN TO SAN DIEGO SURF GRAM AND CAN LEAVE A CHAT OR
-          POST
-        </h4>
+        <div class="info">
+          <Grid container>
+            <Grid xs={12} md={8} lg={6}>
+              <Post />
+            </Grid>
+            <Grid xs={12} md={4} lg={6}>
+              <Chat isLoggedIn={isLoggedIn} />
+            </Grid>
+          </Grid>
+        </div>
       )}
       {!isLoggedIn && (
-        <h4>
-          ...YOU HAVE LOGGED OUT OF SAN DIEGO SURF GRAM AND CANNOT LEAVE A CHAT
-          OR POST
-        </h4>
+        <div class="home">
+          <Container>
+            <Typography variant="h6">
+              Welcome to San Diego SurfGram. This website was specifically
+              designed for anyone who would like to chat to others, give
+              feedback, and gain an understanding of where the best places are
+              to surf in San Diego. We understand that finding the best places
+              to surf can be a very difficult task so we created a more
+              efficient way to do so. Think of us as the Reddit for surfing lol.
+              As always, please respect the fellow members in the community and
+              spread positive vibes all the time!
+            </Typography>
+          </Container>
+          <Container>
+            <h5>
+              In order to Join our local community and get this awesome
+              information, you must create an account.
+            </h5>
+          </Container>
+          <Container>
+            <SignUp
+              isLoggedIn={isLoggedIn}
+              setLogInStatus={setLoginStatus}
+              setUser={setUser}
+            />
+          </Container>
+          <Container>
+            <Login
+              isLoggedIn={isLoggedIn}
+              setLogInStatus={setLoginStatus}
+              setUser={setUser}
+              user={user}
+            />
+          </Container>
+          <br />
+        </div>
       )}
-      <button
-        onClick={() => {
-          setLoginStatus(false);
-          localStorage.clear();
-        }}
-      >
-        LogOut
-      </button>
-      <h1></h1>
-      <u>check out surf chat below to connect with others:</u>
-      <Chat />
-      <h1></h1>
-      <u>check user posts to view possible surf locations:</u>
-      <Post />
-      <SignUp
-        isLoggedIn={isLoggedIn}
-        setLogInStatus={setLoginStatus}
-        setUser={setUser}
-      />
-      <Login
-        isLoggedIn={isLoggedIn}
-        setLogInStatus={setLoginStatus}
-        setUser={setUser}
-        user={user}
-      />
     </div>
   );
 }
