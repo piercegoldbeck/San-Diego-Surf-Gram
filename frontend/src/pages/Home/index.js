@@ -14,8 +14,9 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-//styles for app.js
+//styles for home
 import "../../styles.css";
+
 function Home() {
     const [isLoggedIn, setLoginStatus] = useState(false);
     const [user, setUser] = useState(null);

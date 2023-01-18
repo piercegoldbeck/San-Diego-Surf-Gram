@@ -25,3 +25,13 @@ background-color:black;
 .logoutButton {
     text-align: right;
 }
+h1, h3 {
+    color:whitesmoke;
+}
+.error2 {
+    
+    background-size: cover;
+    background-color: black;
+}
+
+

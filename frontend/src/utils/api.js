@@ -3,7 +3,7 @@ import axios from "axios";
 // sign up function
 export async function signUp(formData) {
   const { data } = await axios.post(
-    "http://localhost:8000/user/signup",
+    "user/signup",
     formData
   );
   return data;
@@ -12,7 +12,7 @@ export async function signUp(formData) {
 //Log in to User Account
 export async function loginToAccount(formData) {
   const { data } = await axios.post(
-    "http://localhost:8000/user/login",
+    "user/login",
     formData
   );
   return data;
@@ -27,7 +27,7 @@ export async function createChat(formData) {
   };
   console.log(formData)
   const { data } = await axios.post(
-    "http://localhost:8000/chat",
+    "chat",
     formData,
     config
   );
@@ -41,7 +41,7 @@ export async function createPost(formData) {
       },
     };
     const { data } = await axios.post(
-      "http://localhost:8000/post",
+      "post",
       formData,
       config
     );
@@ -50,13 +50,13 @@ export async function createPost(formData) {
 
 //show chat
 export async function showChat() {
-  const { data } = await axios.get("http://localhost:8000/chat");
+  const { data } = await axios.get("chat");
   return data;
 }
 
 //show post
 export async function showPost() {
-    const { data } = await axios.get("http://localhost:8000/post");
+    const { data } = await axios.get("post");
     return data;
   }
 
@@ -70,7 +70,7 @@ export async function updateChat(chatId, formData) {
     },
   };
   const { data } = await axios.put(
-    `http://localhost:8000/chat/${chatId}`,
+    `chat/${chatId}`,
     formData,
     config
   );
@@ -84,12 +84,12 @@ export async function deletePost(postId) {
       Authorization: localStorage.getItem("token"),
     },
 }
-await axios.delete(`http://localhost:8000/post/${postId}`,config);
+await axios.delete(`post/${postId}`,config);
 
 }
 
 //getUser
 export async function getUser(userid) {
-  const { data } = await axios.get(`http://localhost:8000/user/${userid}`);
+  const { data } = await axios.get(`user/${userid}`);
   return data;
 }
