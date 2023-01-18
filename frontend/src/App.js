@@ -1,8 +1,10 @@
 import { useState } from "react";
 import * as React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 //components for app
 import Chat from "./components/Chat";
 import Post from "./components/Post";
+
 //pages for app
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -20,6 +22,12 @@ function App() {
   const [isLoggedIn, setLoginStatus] = useState(false);
   const [user, setUser] = useState(null);
   // Api data
+
+  React.useEffect(() => {
+    if(localStorage.token) {
+      setLoginStatus(true)
+    }
+  }, [])
 
   return (
     <div class="App">
@@ -52,6 +60,7 @@ function App() {
               <Chat isLoggedIn={isLoggedIn} />
             </Grid>
           </Grid>
+        
         </div>
       )}
       {!isLoggedIn && (

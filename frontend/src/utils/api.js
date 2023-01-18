@@ -62,29 +62,30 @@ export async function showPost() {
 
 
 
-// update user account
-export async function updateUser(userId, formData) {
+// update a chat
+export async function updateChat(chatId, formData) {
   const config = {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
   };
   const { data } = await axios.put(
-    `http://localhost:8000/user/${userId}`,
+    `http://localhost:8000/chat/${chatId}`,
     formData,
     config
   );
   return data
 }
 
-// delet user account
-export async function deleteUser(userId) {
+// delete a post 
+export async function deletePost(postId) {
   const config = {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
-  };
-  await axios.delete(`http://localhost:8000/user/${userId}`, config);
+}
+await axios.delete(`http://localhost:8000/post/${postId}`,config);
+
 }
 
 //getUser

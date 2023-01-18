@@ -41,7 +41,7 @@ router.put('/:id', isAuthenticated, async (req, res) => {
     const foundChat = await db.Chat.findById(req.params.id)
     const token = req.headers.authorization
     const decoded = jwt.decode(token, config.jwtSecret)
-    if(foundChat.user == decoded.id){
+    if(foundChat.user.id == decoded.id){
         const updatedChat = await db.Chat.findByIdAndUpdate(
             req.params.id,
             req.body,

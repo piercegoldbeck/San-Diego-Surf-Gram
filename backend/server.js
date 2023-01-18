@@ -24,6 +24,7 @@ app.use('/user', userCtrl)
 app.use('/chat', chatCtrl)
 app.use('/post', postCtrl)
 
+
 //where the app will be running for server
 app.listen(PORT, () => {
     console.log(`listening on port: ${PORT}`)
