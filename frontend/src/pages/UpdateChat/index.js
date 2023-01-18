@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { updateChat } from "../../utils/api";
-import { useNavigate } from "react-router-dom";
+
 
 export default function UpdateChat(prop) {
   // function to reveal edit form
@@ -37,6 +37,7 @@ export default function UpdateChat(prop) {
         >
           Edit Chat
         </button>
+
         {showForm && (
           <div className="edit-form">
             <form onSubmit={handleSubmitUpdateChat}>
@@ -44,7 +45,6 @@ export default function UpdateChat(prop) {
                 Chat:
               </label>
               <input
-                //   className="form-control"
                 id="chat"
                 type="text"
                 onChange={handleChange}

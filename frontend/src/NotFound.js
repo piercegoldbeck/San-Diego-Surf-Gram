@@ -6,7 +6,7 @@ export default function PageNotFound(){
         <div>
             <h1>Sorry, page was not found</h1>
             <h1>404 Error</h1>
-            <Link to="/">go back to website</Link>
+            <Link to="/home">go back to website</Link>
         </div>
     );
 }
