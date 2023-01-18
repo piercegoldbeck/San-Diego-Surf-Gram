@@ -1,10 +1,10 @@
 import { useState } from "react";
 import * as React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 //components for app
 import Chat from "./components/Chat";
 import Post from "./components/Post";
-
+import PageNotFound from "./NotFound";
 //pages for app
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -21,6 +21,7 @@ import "./styles.css";
 function App() {
   const [isLoggedIn, setLoginStatus] = useState(false);
   const [user, setUser] = useState(null);
+  const [showError, setShowError] = useState(false);
   // Api data
 
   React.useEffect(() => {
@@ -31,6 +32,15 @@ function App() {
 
   return (
     <div class="App">
+      <div>
+        <Routes>
+      <Route path="/*"
+      element={<PageNotFound />}>
+       
+      </Route>
+      </Routes>
+      </div>
+
       <div class="title">
         <Typography variant="h2">
           SAN DIEGO SURFGRAM
@@ -54,7 +64,7 @@ function App() {
         <div class="info">
           <Grid container>
             <Grid xs={12} md={8} lg={6}>
-              <Post />
+              <Post isLoggedIn={isLoggedIn} />
             </Grid>
             <Grid xs={12} md={4} lg={6}>
               <Chat isLoggedIn={isLoggedIn} />
@@ -101,6 +111,7 @@ function App() {
           <br />
         </div>
       )}
+    
     </div>
   );
 }

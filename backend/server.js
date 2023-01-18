@@ -13,6 +13,7 @@ const postCtrl = require('./controllers/posts')
 
 
 //middleware
+  
 // cross origin allowance
 app.use(cors())
 
