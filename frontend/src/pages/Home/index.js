@@ -79,7 +79,7 @@ function Home() {
           <Container>
             <h5>
               In order to Join our local community and get this awesome
-              information, you must create an account.
+              information, you must sign up or log in to an existing account.
             </h5>
           </Container>
           <Container>
