@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "start": "cd frontend/ && npm run build && cd ../backend/ && node --optimize_for_size --max_old_space_size=460 server.js",
+    "start": "cd frontend/ && npm run build && cd ../backend/ && node server.js",
     "frontend": "cd frontend/ && react-scripts start",
     "backend": "cd backend/ && nodemon server.js"
 
