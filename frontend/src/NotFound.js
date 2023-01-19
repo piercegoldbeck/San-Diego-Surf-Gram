@@ -9,7 +9,7 @@ export default function PageNotFound(){
     return (
         <div class="error">
             <div class="error2">
-             <Typography variant="h1">Sorry, page was not found</Typography>
+             <Typography variant="h2">Sorry, page was not found</Typography>
              <Typography variant="h3">404 Error</Typography>
              <img scr="https://i.imgur.com/6p9HoFT.jpg"/>
              <br/>

@@ -62,7 +62,6 @@ export default function Post({ user }) {
       <Typography variant="h5" mb={2} mt={2}>
         <u>Check user posts to view possible surf locations in San Diego:</u>
       </Typography>
-      <br />
       <div>
         <div>
           <Container>
@@ -190,7 +189,7 @@ export default function Post({ user }) {
         <div>
           <Container>
             <h1>
-              <u>Posts from User</u>
+              <u>Posts from Users</u>
             </h1>
           </Container>
           {posts.map((post, i) => (
