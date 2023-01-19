@@ -3,19 +3,23 @@ import { useState, useEffect } from "react";
 
 // utils
 import { createPost, showPost } from "../../utils/api";
-import {deletePost} from "../../utils/api";
+import { deletePost } from "../../utils/api";
 
 //materialUI imports
 import * as React from "react";
 import { Box, Typography, Container, Button } from "@mui/material";
 
-export default function Post() {
- 
-
-  const [formData, setFormData] = useState({ post: "" });
+export default function Post({ user }) {
+  const [formData, setFormData] = useState({
+    location: "",
+    image: "",
+    rating: "",
+    difficulty: "",
+    break_type: "",
+  });
   const [showForm, setShowForm] = useState(false);
   const [posts, setPosts] = useState([]);
- 
+
   // get post
   function getPosts() {
     showPost().then((data) => setPosts(data));
@@ -34,15 +38,23 @@ export default function Post() {
     event.preventDefault();
     createPost(formData)
       .then(() => getPosts())
-      .finally(() => setFormData({ post: "" }));
+      .then(() => setShowForm(false))
+      .finally(() =>
+        setFormData({
+          location: "",
+          image: "",
+          rating: "",
+          difficulty: "",
+          break_type: "",
+        })
+      );
   }
 
-	// delete post function
-	const destroyPost = (postId) => {
-		alert('Do you want to delete this post?');
-		deletePost(postId);
-		getPosts();
-	};
+  // delete post function
+  const destroyPost = (postId) => {
+    alert("Do you want to delete this post?");
+    deletePost(postId).finally(() => getPosts());
+  };
 
   // render JSX
   return (
@@ -181,7 +193,6 @@ export default function Post() {
               <u>Posts from User</u>
             </h1>
           </Container>
-          {console.log(posts)}
           {posts.map((post, i) => (
             <Box
               sx={{ p: 2, width: 400, border: 3, borderColor: "text.primary" }}
@@ -227,13 +238,16 @@ export default function Post() {
                 {post.break_type}
               </div>
               <br />
-              <Button
-							id='edit-btn'
-              variant="contained"
-							color="error"
-							onClick={()=> destroyPost(post._id)}>
-							Delete Post
-						</Button>
+              { user?.username === post.user?.username && (
+                <Button
+                  id="edit-btn"
+                  variant="contained"
+                  color="error"
+                  onClick={() => destroyPost(post._id)}
+                >
+                  Delete Post
+                </Button>
+              )}
             </Box>
           ))}
         </div>

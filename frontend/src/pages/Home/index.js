@@ -7,6 +7,7 @@ import Post from "../../components/Post";
 //pages for app
 import Login from "../../pages/Login";
 import SignUp from "../../pages/SignUp";
+import { getUser } from "../../utils/api";
 //materialUI imports
 import { Container, Typography, Button, Grid } from "@mui/material";
 import "@fontsource/roboto/300.css";
@@ -18,34 +19,35 @@ import "@fontsource/roboto/700.css";
 import "../../styles.css";
 
 function Home() {
-    const [isLoggedIn, setLoginStatus] = useState(false);
-    const [user, setUser] = useState(null);
-    
+  const [isLoggedIn, setLoginStatus] = useState(false);
+  const [user, setUser] = useState(null);
 
-    React.useEffect(() => {
-        if(localStorage.token) {
-          setLoginStatus(true)
-        }
-      }, [])
-    return (
-        <div class="App">
-
-      
-<div class="title">
+  async function getUserFromBacked() {
+    await getUser().then((data) => setUser(data.user));
+    setLoginStatus(true);
+  }
+  React.useEffect(() => {
+    if (localStorage.token) {
+      getUserFromBacked()
+    }
+  }, []);
+  return (
+    <div class="App">
+      <div class="title">
         <Typography variant="h2">
           SAN DIEGO SURFGRAM
           {isLoggedIn && (
             <div class="logoutButton">
-            <Button
-              class
-              variant="outlined"
-              onClick={() => {
-                setLoginStatus(false);
-                localStorage.clear();
-              }}
-            >
-              LogOut
-            </Button>
+              <Button
+                class
+                variant="outlined"
+                onClick={() => {
+                  setLoginStatus(false);
+                  localStorage.clear();
+                }}
+              >
+                LogOut
+              </Button>
             </div>
           )}
         </Typography>
@@ -54,13 +56,12 @@ function Home() {
         <div class="info">
           <Grid container>
             <Grid xs={12} md={8} lg={6}>
-              <Post isLoggedIn={isLoggedIn} />
+              <Post user={user} />
             </Grid>
             <Grid xs={12} md={4} lg={6}>
               <Chat isLoggedIn={isLoggedIn} />
             </Grid>
           </Grid>
-        
         </div>
       )}
       {!isLoggedIn && (
@@ -95,15 +96,13 @@ function Home() {
               isLoggedIn={isLoggedIn}
               setLogInStatus={setLoginStatus}
               setUser={setUser}
-              user={user}
             />
           </Container>
           <br />
         </div>
       )}
-        
-        </div>
-    )
+    </div>
+  );
 }
 
-export default Home
+export default Home;

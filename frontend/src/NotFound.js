@@ -21,7 +21,7 @@ export default function PageNotFound(){
              variant="outlined"
              
              >
-            <Link to="/home">go back to website</Link></Button>
+            <Link to="/">go back to website</Link></Button>
             </div>
         </div>
     );

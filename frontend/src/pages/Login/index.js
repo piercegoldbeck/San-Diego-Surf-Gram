@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { loginToAccount } from "../../utils/api";
-import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
 
 export default function LogIn(props) {
   //states for login page
-  const navigate = useNavigate();
   const [formState, setFormState] = useState({
     username: "",
     password: "",
@@ -22,7 +20,6 @@ export default function LogIn(props) {
       props.setLogInStatus(true);
       props.setUser(data.user);
     });
-    navigate("/home");
   };
 
   return (

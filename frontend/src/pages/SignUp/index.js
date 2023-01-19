@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
 export default function SignUp(props) {
   //states for signUp page
-  const navigate = useNavigate();
   const initialState = { username: "", password: "" };
   const [formState, setFormState] = useState(initialState);
 
@@ -21,9 +20,7 @@ export default function SignUp(props) {
       localStorage.user_Id = data.user._id;
       props.setLogInStatus(true);
       props.setUser(data.user);
-      console.log(data.user);
     });
-    navigate("/home");
   }
 
   return (

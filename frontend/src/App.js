@@ -17,7 +17,7 @@ function App() {
     <div class="all">
       <div>
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>

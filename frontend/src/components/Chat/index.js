@@ -96,8 +96,6 @@ export default function Chat({ isLoggedIn }) {
             <u>Chats</u>
           </h1>
 
-          {console.log(chats)}
-
           {chats.map((chat, i) => (
             <Box
               sx={{ p: 3, width: 250, border: 2, borderColor: "text.primary" }}

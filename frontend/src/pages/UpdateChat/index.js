@@ -23,7 +23,6 @@ export default function UpdateChat(prop) {
       .finally(() => prop.getChats());
   };
 
-  console.log("this is the chatpage formState", formState);
   return (
     <div className="display-body">
       <div className="edit">

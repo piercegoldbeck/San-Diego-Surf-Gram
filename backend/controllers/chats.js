@@ -14,12 +14,10 @@ function isAuthenticated(req, res, next){
 
 // create route
 router.post('/', async (req, res) => {
-    console.log(req.body)
     const newChat = await db.Chat.create(req.body)
     const token = req.headers.authorization
     const decoded = jwt.decode(token, config.jwtSecret)
     newChat.user = decoded.id
-    console.log(newChat)
     newChat.save()
     res.json(newChat)
 })
