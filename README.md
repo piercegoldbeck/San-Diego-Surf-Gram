@@ -20,7 +20,7 @@ A website for surfers and aspiring to be surfers in San Diego. This app will all
 During the beggining of the project, it was very difficult to understand all the parts that were moving throughout the application. At first, I wanted everything to be rendered on different pages of the application. Later on, it made more sense to create an app which everything could be rendered on one page after signup and login functionality had been completed. This will allow the user to have a better understanding of how the application works and how it will benefit the,m by using it. As the project continued, I felt that users should have the ability to edit their chats and delete any of the posts they have made if they deem necessary. The idea of this application is that everyone is respectful of one another and everyone can benefit from the information that is posted.
 
 ## Deployed Application through Heroku
-"link not available yet"
+"https://san-diego-surfgram.herokuapp.com/"
 
 ## User Stories:
 - As an aspiring surfer, I use this website to gain an understanding of where I should surf and what places are best fit for me in San Diego. This site has also allowed me to connect to others that love the same sport that I do. 
