@@ -81,8 +81,8 @@ export default function Post({ user }) {
               <Box
                 sx={{
                   p: 2,
-                  width: 400,
-                  border: 10,
+                  width: 320,
+                  border: 3,
                   borderColor: "text.primary",
                 }}
               >
@@ -194,7 +194,7 @@ export default function Post({ user }) {
           </Container>
           {posts.map((post, i) => (
             <Box
-              sx={{ p: 2, width: 400, border: 3, borderColor: "text.primary" }}
+              sx={{ p: 2, width: 320, border: 3, borderColor: "text.primary" }}
               key={i}
             >
               {" "}
@@ -212,7 +212,7 @@ export default function Post({ user }) {
               </div>
               <br />
               <div class="picture">
-                <img src={post.image} width={375} border={5} />
+                <img src={post.image} width={300} border={5} />
               </div>
               <br />
               <div>

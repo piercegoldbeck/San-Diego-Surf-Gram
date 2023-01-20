@@ -28,7 +28,7 @@ function Home() {
   }
   React.useEffect(() => {
     if (localStorage.token) {
-      getUserFromBacked()
+      getUserFromBacked();
     }
   }, []);
   return (
@@ -66,6 +66,7 @@ function Home() {
       )}
       {!isLoggedIn && (
         <div class="home">
+          <br/>
           <Container>
             <Typography variant="h6">
               Welcome to San Diego SurfGram. This website was specifically
@@ -99,6 +100,31 @@ function Home() {
             />
           </Container>
           <br />
+
+          <Typography variant="h6">
+            <u>Connect to San Diego SurfGram</u>
+            <Container>
+              <nav>
+                <ul>
+                  <Container>
+                    <a
+                      target="_blank"
+                      href="https://www.linkedin.com/in/pierce-goldbeck-b36a1623b/"
+                    >
+                      LinkedIn
+                    </a>
+                  </Container>
+                  <Container>
+                    <a target="_blank" href="https://github.com/piercegoldbeck">
+                      Github
+                    </a>
+                  </Container>
+                  <Container>Phone number: (949)-572-9790</Container>
+                  Email: pgoldbeck1103@gmail.com
+                </ul>
+              </nav>
+            </Container>
+          </Typography>
         </div>
       )}
     </div>
