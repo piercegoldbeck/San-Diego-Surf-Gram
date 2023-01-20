@@ -35,7 +35,7 @@ router.post('/signup', async (req, res) => {
 //login route
 router.post('/login', async (req, res) => {
     const foundUser = await db.User.findOne({ username: req.body.username})
-    if(req.body.password === foundUser.password){
+    if(foundUser && req.body.password === foundUser?.password){
         const payload = {id: foundUser._id}
         const token = jwt.encode(payload, config.jwtSecret)
         const userChat = await db.Chat.find({ user: foundUser._id })
