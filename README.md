@@ -15,9 +15,10 @@ A website for surfers and aspiring to be surfers in San Diego. This app will all
 - error page 404 with return navigation functionality when a user goes to a route that does not exist
 - Sign up and login pages for new and current users
 - Full CRUD throughout the application, posts can be created and deleted, chats can be created and edited
+-Ability to delete a post and update a chat depending on which user is logged in. In other words, the delete/edit funcitonality will only be present if you are the user that created the chat or post.
 
 ## Approach Taken towards MVP and Completion
-During the beggining of the project, it was very difficult to understand all the parts that were moving throughout the application. At first, I wanted everything to be rendered on different pages of the application. Later on, it made more sense to create an app which everything could be rendered on one page after signup and login functionality had been completed. This will allow the user to have a better understanding of how the application works and how it will benefit the,m by using it. As the project continued, I felt that users should have the ability to edit their chats and delete any of the posts they have made if they deem necessary. The idea of this application is that everyone is respectful of one another and everyone can benefit from the information that is posted.
+During the beggining of the project, it was very difficult to understand all the parts that were moving throughout the application. At first, I wanted everything to be rendered on different pages of the application. Later on, it made more sense to create an app which everything could be rendered on one page after signup and login functionality had been completed. This will allow the user to have a better understanding of how the application works and how it will benefit them by using it. As the project continued, I felt that users should have the ability to edit their chats and delete any of the posts they have made if they deem necessary. The idea of this application is that everyone is respectful of one another and everyone can benefit from the information that is posted.
 
 ## Deployed Application through Heroku
 "https://san-diego-surfgram.herokuapp.com/"
