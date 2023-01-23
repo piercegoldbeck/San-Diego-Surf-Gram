@@ -38,9 +38,15 @@ this is the basics behind how my routes/controllers were made
 
 ### Instalation Instructions:
 In order to successfully clone and run the applicaiton in your own environment follow these steps and run them inside of your terminal:
+
 Step 1: npm i mongoose express method-override jwt-simple
+
 Step 2: npm i dotenv axios cors
+
 Step 3: npm i react-router-dom
+
 Step 4: npm install @mui/material @emotion/react @emotion/styled
+
 Step 5: npm install @fontsource/roboto @mui/material @mui/icons-material
+
 This will allow you to have full acess and understanding of the application. Cheers!
