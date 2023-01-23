@@ -9,11 +9,11 @@ import UpdateChat from "../../pages/UpdateChat";
 import * as React from "react";
 import { Box, Typography, Container, Button } from "@mui/material";
 
-export default function Chat({ isLoggedIn }) {
+export default function Chat({ user }) {
   const [formData, setFormData] = useState({ chat: "" });
   const [showForm, setShowForm] = useState(false);
   const [chats, setChats] = useState([]);
-  const [displayChats, setDisplayChats] = useState(false);
+ 
 
   // get chat
   async function getChats() {
@@ -102,8 +102,9 @@ export default function Chat({ isLoggedIn }) {
               key={i}
             >
               <b>{chat.user?.username || "Unknown User"}</b>: {chat.chat}
-              
-              <UpdateChat chat={chat} getChats={getChats} />
+             
+              <UpdateChat chat={chat} getChats={getChats} user={user}/>
+            
             </Box>
           ))}
         </div>

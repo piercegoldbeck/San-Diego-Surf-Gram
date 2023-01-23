@@ -59,7 +59,7 @@ function Home() {
               <Post user={user} />
             </Grid>
             <Grid xs={12} md={4} lg={6}>
-              <Chat isLoggedIn={isLoggedIn} />
+              <Chat isLoggedIn={isLoggedIn} user={user}/>
             </Grid>
           </Grid>
         </div>
